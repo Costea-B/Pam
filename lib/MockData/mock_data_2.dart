@@ -7,6 +7,7 @@ final List<Product> mockProducts = [
     price: 125,
     oldPrice: 155,
     imageUrl: "assets/new1.png",
+      discount: 15,
     isNew : true
   ),
   Product(

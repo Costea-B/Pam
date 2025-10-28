@@ -44,11 +44,27 @@ class _ProductCardState extends State<ProductCard> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(
-                          product.imageUrl,
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                        ),
+                        child: product.imageUrl.startsWith('http')
+                            ? Image.network(
+                                product.imageUrl,
+                                fit: BoxFit.cover,
+                                width: double.infinity,
+                              )
+                            : (product.imageUrl.isNotEmpty
+                                ? Image.asset(
+                                    product.imageUrl,
+                                    fit: BoxFit.cover,
+                                    width: double.infinity,
+                                  )
+                                : Container(
+                                    color: Colors.grey[300],
+                                    width: double.infinity,
+                                    child: const Icon(
+                                      Icons.image_not_supported,
+                                      size: 48,
+                                      color: Colors.grey,
+                                    ),
+                                  )),
                       ),
 
                       // Badge discount
